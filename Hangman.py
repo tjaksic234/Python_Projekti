@@ -11,7 +11,7 @@ def play(word):
     guessed_letters = []
     guessed_words = []
     tries = 6
-    print("Igrajmo vješala!!")
+    print("Igrajmo vjesala!!")
     print(display_hangman(tries))
     print(word_completion)
     print("\n")
@@ -25,9 +25,12 @@ def play(word):
                 tries -= 1
                 guessed_letters.append(guess)
             else:
-                print("Pogodio si slovo", guess, "je slovo koje se trazi!!!")
+                print("Pogodio si", guess, "je slovo koje se trazi!!!")
                 guessed_letters.append(guess)
                 word_as_list = list(word_completion)
+                #sa linijom ispod zapravo pretvaramo rijec(word) u indeksiranu listu npr. [0,G],[1,R] itd...
+                #te s pomocu i for i ako se uvjet zadovolji uzet cemo samo indeks iz te liste
+                #te s pomocu index od for petlje zamjenjujemo '_' sa slovom iz novo kreirane indeksirane liste zvana indices
                 indices = [i for i, letter in enumerate(word) if letter == guess]
                 for index  in indices:
                     word_as_list[index] = guess
