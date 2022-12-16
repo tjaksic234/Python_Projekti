@@ -1,9 +1,17 @@
 import random
 word_list=['grlica','predsjednik','gospa','jelka','stolica','zavjesa']
 
+
 def get_word():
-    word=random.choice(word_list)
-    return word.upper()
+    if len(word_list)<1:
+        print("Nema vise dostupnih rijeci :/")
+        exit()
+    else:
+        word = random.choice(word_list)
+        word_list.remove(word)
+        print(word)
+        print(word_list)
+        return word.upper()
 
 def play(word):
     word_completion = '_' * len(word)
@@ -30,7 +38,7 @@ def play(word):
                 word_as_list = list(word_completion)
                 #sa linijom ispod zapravo pretvaramo rijec(word) u indeksiranu listu npr. [0,G],[1,R] itd...
                 #te s pomocu i for i ako se uvjet zadovolji uzet cemo samo indeks iz te liste
-                #te s pomocu index od for petlje zamjenjujemo '_' sa slovom iz novo kreirane indeksirane liste zvana indices
+                #te s pomocu for petlje ispod stavljamo slovo koje trazimo u listu
                 indices = [i for i, letter in enumerate(word) if letter == guess]
                 for index  in indices:
                     word_as_list[index] = guess
